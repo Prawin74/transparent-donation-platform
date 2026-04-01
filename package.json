@@ -1,0 +1,27 @@
+{
+  "name": "transparent-donation-platform",
+  "version": "1.0.0",
+  "description": "Transparent and auditable donation platform with Hardhat + React",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf cache artifacts",
+    "compile": "hardhat compile",
+    "lint": "echo \"No lint configured\"",
+    "deploy:campaign": "node scripts/deploy-campaign.js",
+    "deploy:simple": "node scripts/deploy-simple.js",
+    "test": "hardhat test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "@types/node": "^22.19.1",
+    "hardhat": "^2.27.1",
+    "typescript": "~5.8.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.0",
+    "dotenv": "^16.4.7"
+  }
+}

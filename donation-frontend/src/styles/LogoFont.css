@@ -1,0 +1,78 @@
+/* LogoFont.css */
+
+/* 0) Preload is better handled in index.html, but we import here for simplicity */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* -----------------------------
+   1) @font-face declarations
+   ----------------------------- */
+/* We map the user's requested "Inter Variable" to the Google Font "Inter" 
+   since we don't have the local files. */
+@font-face {
+    font-family: "Inter Variable";
+    src: local("Inter"), url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+    /* Basic Latin + Latin-1 range */
+    unicode-range: U+000-5FF;
+}
+
+/* -----------------------------
+   2) CSS variables (typographic tokens)
+   ----------------------------- */
+:root {
+    /* Prioritize Inter Variable, then Inter (Google), then System */
+    --title-font: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --title-weight: 700;
+    /* base weight */
+    --title-weight-strong: 800;
+    /* strong emphasis */
+    --title-size: 24px;
+    /* Adjusted for Nav Bar */
+    --title-line-height: 1.05;
+    --title-letter-spacing: -0.02em;
+    --title-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* -----------------------------
+   3) Utility class for the site title
+   ----------------------------- */
+.site-title {
+    font-family: var(--title-font);
+    font-weight: var(--title-weight);
+    font-size: var(--title-size);
+    line-height: var(--title-line-height);
+    letter-spacing: var(--title-letter-spacing);
+    font-feature-settings: var(--title-feature-settings);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    padding: 0;
+    /* Variable font axis control */
+    font-variation-settings: "wght" 700, "ital" 0;
+
+    /* Gradient text effect to match the logo */
+    background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Strong variant */
+.site-title--strong {
+    font-weight: var(--title-weight-strong);
+    font-variation-settings: "wght" 800;
+}
+
+/* Small caps variant */
+.site-title--smallcaps {
+    font-variant-caps: small-caps;
+    font-feature-settings: "smcp" 1, "kern" 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-title {
+        transition: none;
+    }
+}
